@@ -1,0 +1,19 @@
+body {
+    margin: 20px;
+}
+
+#container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#gifbutton {
+    color: white;
+    background-color: blue;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 24px;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+}
