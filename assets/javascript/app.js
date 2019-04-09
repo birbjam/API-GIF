@@ -6,8 +6,18 @@
 //Clicking on images makes the GIFs move.
 
 
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf";
+//var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
 
-fetch(queryURL)
-    .then((response) => response.json()) // then do something with the response (Promise)
-    .then((myJson) => console.log(JSON.stringify(myJson)));
+var topics = ["python", "javascript", "css", "html", "bootstrap", "java", "c++"];
+
+var codingMemesButton;
+
+
+function generateButtons() {
+    document.getElementById("memebtn").innerHTML = null;
+
+    for (var i=0; i < topics.length; i++) {
+        codingMemesButton = document.createElement("button");
+        document.getElementById("button").innerText(topics[i]);
+}
+}
