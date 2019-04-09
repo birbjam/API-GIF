@@ -8,7 +8,7 @@
 window.onload = function () {
 
 
-var topics = ["cat", "dog", "birb", "sloth", "rhino", "elephant", "goat", "cow", "tiger"];
+var topics = [];
 
 
 document.querySelector("#gifbutton").addEventListener("click", function (event) {
@@ -16,10 +16,7 @@ document.querySelector("#gifbutton").addEventListener("click", function (event) 
 
     var animalEntered = document.querySelector("#animal-input").value.trim();
 
-
-});
-
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=pg";
+    var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animalEntered}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
 
     fetch(queryURL, {
         method: "GET"
@@ -27,10 +24,10 @@ var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKs
         // After data comes back from the request
         .then(function (response) { return response.json() })
         .then(function (response) {
-            console.log(queryURL);
+            //console.log(queryURL);
 
-            console.log(response);
-        var results = response.data;
+            //console.log(response);
+            var results = response.data;
 
             for (let item of results) {
 
@@ -50,9 +47,15 @@ var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKs
                 animalDiv.appendChild(p);
                 animalDiv.appendChild(animalImage);
 
-                // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+                // Prependng the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
             }
+
+
+
+});
+
+
 
         })};
