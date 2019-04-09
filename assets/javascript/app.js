@@ -5,23 +5,30 @@
 //GIFs load as still images
 //Clicking on images makes the GIFs move.
 
+window.onload = function () {
 
 //var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
 
-var topics = ["python", "javascript", "css", "html", "bootstrap", "java", "c++", "coding", "programming"];
-
-var codingMemesButton;
+var topics = ["cat", "dog", "birb", "sloth", "rhino", "elephant", "goat", "cow", "tiger"];
 
 
-function generateButtons() {
+document.querySelector("#gifbutton").addEventListener("click", function (event) {
+    event.preventDefault();
 
-    for (var i=0; i < topics.length; i++) {
-        var codingMemesButton = document.createElement("memebtn");
-        document.getElementById("memebtn").innerText = (topics[i]);
-        document.setAttribute("data-name", topics[i]);
-        document.getElementById("memebtn").className = "appendbtn";
-        document.getElementById("memebtn").innerText(codingMemesButton);
+    var animalEntered = document.querySelector("#animal-input").value.trim();
+
+    function generateButtons() {
+
+        for (var i = 0; i < topics.length; i++) {
+            var animalButton = document.createElement("button");
+            animalButton.getElementById("animal-buttons").innerText = (topics[i]);
+            animalButton.setAttribute("data-name", topics[i]);
+            animalButton.getElementById("animal-buttons").className = "appendbtn";
+            document.getElementById("animal-buttons").innerText(animalButton);
+        }
+    };
+
+});
+
+
 }
-}
-
-generateButtons();
