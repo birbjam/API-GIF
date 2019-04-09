@@ -8,19 +8,20 @@
 
 //var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
 
-var topics = ["python", "javascript", "css", "html", "bootstrap", "java", "c++"];
+var topics = ["python", "javascript", "css", "html", "bootstrap", "java", "c++", "coding", "programming"];
 
 var codingMemesButton;
 
 
 function generateButtons() {
-    document.getElementById("memebtn").innerHTML = null;
 
     for (var i=0; i < topics.length; i++) {
-        codingMemesButton = document.createElement("memebtn");
-        codingMemesButton.getElementById("memebtn").innerText(topics[i]);
-        codingMemesButton.setAttribute("data-name", topics[i]);
-        codingMemesButton.getElementById("memebtn").className = "appendbtn";
-        document.getElementById("memebtn").innerHTML(codingMemesButton);
+        var codingMemesButton = document.createElement("memebtn");
+        document.getElementById("memebtn").innerText = (topics[i]);
+        document.setAttribute("data-name", topics[i]);
+        document.getElementById("memebtn").className = "appendbtn";
+        document.getElementById("memebtn").innerText(codingMemesButton);
 }
 }
+
+generateButtons();
