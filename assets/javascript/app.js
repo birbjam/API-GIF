@@ -7,7 +7,6 @@
 
 window.onload = function () {
 
-//var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
 
 var topics = ["cat", "dog", "birb", "sloth", "rhino", "elephant", "goat", "cow", "tiger"];
 
@@ -17,18 +16,43 @@ document.querySelector("#gifbutton").addEventListener("click", function (event) 
 
     var animalEntered = document.querySelector("#animal-input").value.trim();
 
-    function generateButtons() {
-
-        for (var i = 0; i < topics.length; i++) {
-            var animalButton = document.createElement("button");
-            animalButton.innerText = (topics[i]);
-            animalButton.setAttribute("data-name", topics[i]);
-            animalButton.getElementById("animal-buttons").className = "appendbtn";
-            document.getElementById("animal-buttons").innerText(animalButton);
-        }
-    };
 
 });
 
+var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=pg";
 
-}
+    fetch(queryURL, {
+        method: "GET"
+    })
+        // After data comes back from the request
+        .then(function (response) { return response.json() })
+        .then(function (response) {
+            console.log(queryURL);
+
+            console.log(response);
+        var results = response.data;
+
+            for (let item of results) {
+
+                // Creating and storing a div tag
+                var animalDiv = document.createElement("div");
+
+                // Creating a paragraph tag with the result item's rating
+                var p = document.createElement("p")
+                p.innerText = `Rating: ${item.rating}`;
+
+                // Creating and storing an image tag
+                var animalImage = document.createElement("img");
+                // Setting the src attribute of the image to a property pulled off the result item
+                animalImage.setAttribute("src", item.images.fixed_height.url);
+
+                // Appending the paragraph and image tag to the animalDiv
+                animalDiv.appendChild(p);
+                animalDiv.appendChild(animalImage);
+
+                // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+                let gifContainer = document.querySelector("#images");
+                gifContainer.prepend(animalDiv);
+            }
+
+        })};
