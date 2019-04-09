@@ -17,7 +17,10 @@ function generateButtons() {
     document.getElementById("memebtn").innerHTML = null;
 
     for (var i=0; i < topics.length; i++) {
-        codingMemesButton = document.createElement("button");
-        document.getElementById("button").innerText(topics[i]);
+        codingMemesButton = document.createElement("memebtn");
+        codingMemesButton.getElementById("memebtn").innerText(topics[i]);
+        codingMemesButton.setAttribute("data-name", topics[i]);
+        codingMemesButton.getElementById("memebtn").className = "appendbtn";
+        document.getElementById("memebtn").innerHTML(codingMemesButton);
 }
 }
