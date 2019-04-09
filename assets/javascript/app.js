@@ -7,7 +7,7 @@
 
 window.onload = function () {
 
-//var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
+//var queryURL = "http://api.giphy.com/v1/gifs/search?q=animals&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=5&rating=g";
 
 var topics = ["cat", "dog", "birb", "sloth", "rhino", "elephant", "goat", "cow", "tiger"];
 
@@ -21,7 +21,7 @@ document.querySelector("#gifbutton").addEventListener("click", function (event) 
 
         for (var i = 0; i < topics.length; i++) {
             var animalButton = document.createElement("button");
-            animalButton.getElementById("animal-buttons").innerText = (topics[i]);
+            animalButton.innerText = (topics[i]);
             animalButton.setAttribute("data-name", topics[i]);
             animalButton.getElementById("animal-buttons").className = "appendbtn";
             document.getElementById("animal-buttons").innerText(animalButton);
