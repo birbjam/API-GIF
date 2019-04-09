@@ -7,47 +7,58 @@
 
 window.onload = function () {
 
-
+// Setting a variable to house an empty array.
 var topics = [];
 
-
+// Event Listener for the gif button to be pressed.
 document.querySelector("#gifbutton").addEventListener("click", function (event) {
     event.preventDefault();
 
+    // Trims any spaces from what is typed into the form and stores it into
+    // a variable.
     var animalEntered = document.querySelector("#animal-input").value.trim();
 
+    // A variable to house the API URL with the ability to insert whatever was 
+    // typed into the input field into the URL to get differet results.
     var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animalEntered}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
 
+    // API request using the above variable.
     fetch(queryURL, {
         method: "GET"
     })
-        // After data comes back from the request
+        // After data comes back from the request.
         .then(function (response) { return response.json() })
         .then(function (response) {
-            //console.log(queryURL);
 
+            // Testing to see if the response comes back.
             //console.log(response);
+
+            //Stores the data in a results variable.
             var results = response.data;
 
+            // Loops through the results with a for loop.
             for (let item of results) {
 
-                // Creating and storing a div tag
+                // Creates a div element and stores it in a variable.
                 var animalDiv = document.createElement("div");
 
-                // Creating a paragraph tag with the result item's rating
-                var p = document.createElement("p")
+                // Creates a paragraph tag.
+                var p = document.createElement("p");
+
+                // The paragraph tag will display the rating on the page.
                 p.innerText = `Rating: ${item.rating}`;
 
-                // Creating and storing an image tag
+                // Creates an img element and stores it in a variable.
                 var animalImage = document.createElement("img");
-                // Setting the src attribute of the image to a property pulled off the result item
+
+                // Sets the src attribute of the image to a property from the result item.
                 animalImage.setAttribute("src", item.images.fixed_height.url);
 
-                // Appending the paragraph and image tag to the animalDiv
+                // Appends the p and img tags to the animalDiv tag.
                 animalDiv.appendChild(p);
                 animalDiv.appendChild(animalImage);
 
-                // Prependng the animalDiv to the HTML page in the "#images" div
+                // Prepends the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
             }
