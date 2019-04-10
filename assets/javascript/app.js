@@ -17,12 +17,19 @@ var animal = "";
 function addButtons() {
     document.querySelector("#animal-buttons").innerHTML = "";
 
+    //Looping through the array of animals.
     for (let animal of animalsArray) {
+
+        // Creates a button for each animal in the array.
         var b = document.createElement("button");
         b.onclick = addAnimalGIF;
+        // Adds a class of animal to the button.
         b.classList.add("animal");
+        // Sets the data attribute of the button.
         b.setAttribute("data-name", animal);
+        // Sets the text inside the button.
         b.innerText = animal;
+        //Adds the button to the DOM.
         document.querySelector("#animal-buttons").appendChild(b);
 
     }
@@ -37,14 +44,14 @@ var addAnimal = (event) => {
     // Trims any spaces from what is typed into the form and stores it into
     // a variable.
     animal = document.querySelector("#animal-input").value.trim();
-
+    // Adds the animal from the textbox to the animals array
     animalsArray.push(animal);
 
     addButtons();
 };
 
 
-    document.querySelector("#container").addEventListener("click", addAnimalGIF);
+    document.querySelector("#animal-buttons").addEventListener("click", addAnimalGIF);
 
     addButtons();
     
