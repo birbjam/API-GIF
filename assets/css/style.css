@@ -17,3 +17,9 @@ body {
     border: none;
     display: inline-block;
 }
+
+#animal-form {
+    float: right;
+    margin: 5px;
+    padding: 5px;
+}

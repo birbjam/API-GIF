@@ -12,7 +12,8 @@ var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "s
 // Setting an empty animal array for the buttons.
 var animal = "";
 
-// Function for adding the buttons.
+
+// Setting up function for adding the buttons.
 function addButtons() {
     document.querySelector("#animal-buttons").innerHTML = "";
 
@@ -21,7 +22,7 @@ function addButtons() {
 
         // Creates a button for each animal in the array.
         var b = document.createElement("button");
-        b.onclick = addAnimalGIF;
+        //b.onclick = addAnimalGIF;
         // Adds a class of animal to the button.
         b.classList.add("animal");
         // Sets the data attribute of the button.
@@ -32,9 +33,7 @@ function addButtons() {
         document.querySelector("#animal-buttons").appendChild(b);
 
     }
-    addAnimalGIF();
-}
-
+};
 
 // Event Listener for the gif button to be pressed.
 document.querySelector("#gifbutton").addEventListener("click", (event) => addAnimal(event));
@@ -51,12 +50,16 @@ var addAnimal = (event) => {
 };
 
 
-    document.querySelector("#animal-buttons").addEventListener("click", addAnimalGIF);
+    //document.querySelector("#animal-buttons").addEventListener("click", addAnimalGIF);
 
     addButtons();
     
     
-    function addAnimalGIF() {
+    
+    document.querySelector("#container").addEventListener("click", function(event) {
+
+        if (event.target.tagName == "BUTTON") {
+            var animal = event.target.dataset.animal;
 
     // A variable to house the API URL with the ability to insert whatever was 
     // typed into the input field into the URL to get differet results.
@@ -113,4 +116,4 @@ var addAnimal = (event) => {
         )};
        
 
-    };
+    })};
