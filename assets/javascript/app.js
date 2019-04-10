@@ -1,5 +1,4 @@
-//Form where you can add an animal.
-//When you add an animal, creates a button.
+
 //Button is linked to the api which then retrieves the animal that was clicked.
 //Displays 10 GIFs
 //GIFs load as still images
@@ -33,6 +32,7 @@ function addButtons() {
         document.querySelector("#animal-buttons").appendChild(b);
 
     }
+    addAnimalGIF();
 }
 
 
@@ -92,7 +92,8 @@ var addAnimal = (event) => {
                 var animalImage = document.createElement("img");
 
                 // Sets the src attribute of the image to a property from the result item.
-                animalImage.setAttribute("src", item.images.fixed_height.url);
+                // In this case it will put the GIF as a still image.
+                animalImage.setAttribute("src", item.images.fixed_height_still.url);
 
                 // Appends the p and img tags to the animalDiv tag.
                 animalDiv.appendChild(p);
@@ -101,7 +102,15 @@ var addAnimal = (event) => {
                 // Prepends the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
-            };
+
+                // Selects all the img elements and adds an event listener.
+                document.querySelector("img").addEventListener("click", function () {
+                    // When the image is clicked, it starts moving.
+                    animalImage.setAttribute("src", item.images.fixed_height.url);
+                }
+                )};
         }
         )};
+       
+
     };
