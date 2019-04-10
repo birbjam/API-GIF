@@ -10,8 +10,10 @@ window.onload = function () {
 // Setting a variable to house the initial animal array.
 var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
+// Setting an empty animal array for the buttons.
 var animal = "";
 
+// Function for adding the buttons.
 function addButtons() {
     document.querySelector("#animal-buttons").innerHTML = "";
 
