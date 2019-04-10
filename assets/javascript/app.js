@@ -7,20 +7,49 @@
 
 window.onload = function () {
 
-// Setting a variable to house an empty array.
-var topics = [];
+// Setting a variable to house the initial animal array.
+var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
+
+
+
+function addButtons() {
+    document.querySelector("#animal-buttons").innerHTML = "";
+
+    for (let animal of animalsArray) {
+        var b = document.createElement("button");
+        b.onclick = addAnimalGIF;
+        b.classList.add("animal");
+        b.setAttribute("data-name", animal);
+        b.innerText = animal;
+        document.querySelector("#animal-buttons").appendChild(b);
+
+    }
+}
+
+// Trims any spaces from what is typed into the form and stores it into
+// a variable.
+var animal = document.querySelector("#animal-input").value.trim();
 
 // Event Listener for the gif button to be pressed.
-document.querySelector("#gifbutton").addEventListener("click", function (event) {
+document.querySelector("#gifbutton").addEventListener("click", (event) => addAnimal(event));
+var addAnimal = (event) => {
     event.preventDefault();
 
-    // Trims any spaces from what is typed into the form and stores it into
-    // a variable.
-    var animalEntered = document.querySelector("#animal-input").value.trim();
+    animalsArray.push(animal);
+
+    addButtons();
+};
+
+    addButtons();
+
+    document.querySelector("#container").addEventListener("click", addAnimalGIF);
+    
+    
+    function addAnimalGIF() {
 
     // A variable to house the API URL with the ability to insert whatever was 
     // typed into the input field into the URL to get differet results.
-    var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animalEntered}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
+    var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
 
     // API request using the above variable.
     fetch(queryURL, {
@@ -61,12 +90,7 @@ document.querySelector("#gifbutton").addEventListener("click", function (event) 
                 // Prepends the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
-            }
-
-
-
-});
-
-
-
-        })};
+            };
+        }
+        )};
+    };
