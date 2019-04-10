@@ -10,7 +10,7 @@ window.onload = function () {
 // Setting a variable to house the initial animal array.
 var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
-
+var animal = "";
 
 function addButtons() {
     document.querySelector("#animal-buttons").innerHTML = "";
@@ -26,23 +26,25 @@ function addButtons() {
     }
 }
 
-// Trims any spaces from what is typed into the form and stores it into
-// a variable.
-var animal = document.querySelector("#animal-input").value.trim();
 
 // Event Listener for the gif button to be pressed.
 document.querySelector("#gifbutton").addEventListener("click", (event) => addAnimal(event));
 var addAnimal = (event) => {
     event.preventDefault();
 
+    // Trims any spaces from what is typed into the form and stores it into
+    // a variable.
+    animal = document.querySelector("#animal-input").value.trim();
+
     animalsArray.push(animal);
 
     addButtons();
 };
 
-    addButtons();
 
     document.querySelector("#container").addEventListener("click", addAnimalGIF);
+
+    addButtons();
     
     
     function addAnimalGIF() {
