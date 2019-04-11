@@ -1,3 +1,5 @@
+GIPHY API Project
+
 What this is supposed to be:
   Functioning.
  
