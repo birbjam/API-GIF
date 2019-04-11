@@ -10,7 +10,7 @@ window.onload = function () {
 var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
 // Setting an empty animal array for the buttons.
-var animal = "";
+//var animal = "";
 
 
 // Setting up function for adding the buttons.
@@ -56,10 +56,10 @@ var addAnimal = (event) => {
     
     
     
-    document.querySelector("#container").addEventListener("click", function(event) {
+    document.querySelector("#animal-buttons").addEventListener("click", function(event) {
 
         if (event.target.tagName == "BUTTON") {
-            var animal = event.target.dataset.animal;
+            animal = event.target.dataset.animal;
 
     // A variable to house the API URL with the ability to insert whatever was 
     // typed into the input field into the URL to get differet results.
@@ -97,6 +97,7 @@ var addAnimal = (event) => {
                 // Sets the src attribute of the image to a property from the result item.
                 // In this case it will put the GIF as a still image.
                 animalImage.setAttribute("src", item.images.fixed_height_still.url);
+                animalImage.setAttribute("data-animal", animal);
 
                 // Appends the p and img tags to the animalDiv tag.
                 animalDiv.appendChild(p);
