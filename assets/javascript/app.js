@@ -8,10 +8,7 @@ window.onload = function () {
 // Setting a variable to house the initial animal array.
 var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
-// Setting an empty animal array for the buttons.
 var animal = document.querySelector("#animal-input").value.trim();
-
-    console.log(animal);
 
 // Setting up function for adding the buttons.
 function addButtons() {
@@ -31,7 +28,6 @@ function addButtons() {
         b.innerText = animal;
         //Adds the button to the DOM.
         document.querySelector("#animal-buttons").appendChild(b);
-
     }
 };
 
@@ -54,7 +50,7 @@ var addAnimal = (event) => {
 
     addButtons();
     
-    
+
     
     // Event listener that waits for the animal buttons to be clicked.
     document.querySelector("#animal-buttons").addEventListener("click", function(event) {
@@ -103,6 +99,8 @@ var addAnimal = (event) => {
                 animalImage.setAttribute("src", item.images.fixed_height_still.url);
                 animalImage.setAttribute("data-animal", animal);
 
+        
+
                 // Appends the p and img tags to the animalDiv tag.
                 animalDiv.appendChild(p);
                 animalDiv.appendChild(animalImage);
@@ -110,15 +108,17 @@ var addAnimal = (event) => {
                 // Prepends the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
-                }
+                
+                // Selects all the img elements and adds an event listener.
+                document.querySelector("#images").addEventListener("click", function () {
+                    // When the image is clicked, it starts moving.
+                    animalImage.setAttribute("src", item.images.fixed_height.url);
+                });
+            };
             }
+            
             )}
-        })
-
-    // Selects all the img elements and adds an event listener.
-    //document.querySelector("img").addEventListener("click", function () {
-        // When the image is clicked, it starts moving.
-        //animalImage.setAttribute("src", item.images.fixed_height.url);
-    }
+        });
     
-    //)};
+
+};
