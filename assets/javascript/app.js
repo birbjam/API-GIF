@@ -1,7 +1,6 @@
 
 //Button is linked to the api which then retrieves the animal that was clicked.
-//Displays 10 GIFs
-//GIFs load as still images
+
 //Clicking on images makes the GIFs move.
 
 window.onload = function () {
@@ -10,8 +9,9 @@ window.onload = function () {
 var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
 // Setting an empty animal array for the buttons.
-//var animal = "";
+var animal = document.querySelector("#animal-input").value.trim();
 
+    console.log(animal);
 
 // Setting up function for adding the buttons.
 function addButtons() {
@@ -56,14 +56,18 @@ var addAnimal = (event) => {
     
     
     
+    // Event listener that waits for the animal buttons to be clicked.
     document.querySelector("#animal-buttons").addEventListener("click", function(event) {
-
-        if (event.target.tagName == "BUTTON") {
-            animal = event.target.dataset.animal;
 
     // A variable to house the API URL with the ability to insert whatever was 
     // typed into the input field into the URL to get differet results.
-    var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg";
+        
+    console.log(queryURL);
+
+    if (event.target.tagName == "BUTTON") {
+        
+        animal = event.target.dataset.animal;
 
     // API request using the above variable.
     fetch(queryURL, {
@@ -106,15 +110,15 @@ var addAnimal = (event) => {
                 // Prepends the animalDiv to the HTML page in the "#images" div
                 let gifContainer = document.querySelector("#images");
                 gifContainer.prepend(animalDiv);
-
-                // Selects all the img elements and adds an event listener.
-                document.querySelector("img").addEventListener("click", function () {
-                    // When the image is clicked, it starts moving.
-                    animalImage.setAttribute("src", item.images.fixed_height.url);
                 }
-                )};
-        }
-        )};
-       
+            }
+            )}
+        })
 
-    })};
+    // Selects all the img elements and adds an event listener.
+    //document.querySelector("img").addEventListener("click", function () {
+        // When the image is clicked, it starts moving.
+        //animalImage.setAttribute("src", item.images.fixed_height.url);
+    }
+    
+    //)};
