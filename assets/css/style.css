@@ -8,7 +8,7 @@ body {
 
 #gifbutton {
     color: white;
-    background-color: blue;
+    background-color: lightseagreen;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 15px;
@@ -22,4 +22,13 @@ body {
     float: right;
     margin: 5px;
     padding: 5px;
+}
+
+.animal {
+    margin: 5px;
+    color: white;
+    background-color: lightseagreen;
+    padding: 10px;
+    border: none;
+    display: inline-block;
 }
