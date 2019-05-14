@@ -83,7 +83,7 @@ window.onload = function () {
                         var animalImage = document.createElement("img");
 
                         // Sets the src attribute of the image to a property from the result item.
-                        // In this case it will put the GIF as a still image.
+                        // This is where we could start it as a still image.
                         animalImage.setAttribute("src", item.images.fixed_height.url);
                         animalImage.setAttribute("data-animal", animal);
 
@@ -97,11 +97,8 @@ window.onload = function () {
 
                         // Selects all the img elements and adds an event listener.
                         document.querySelector("#images").addEventListener("click", function () {
-                            
-                            /* You can click only the first gif and make it move but clicking on any other gifs only
-                            makes the first gif restart. Clicking on the first gif again makes it restart and does not 
-                            pause it as it is supposed to. */
-                            // When the image is clicked, it starts moving.
+                        
+                            // Clicking on the image will restart the GIF.
                             animalImage.setAttribute("src", item.images.fixed_height.url);
                         });
                     };
