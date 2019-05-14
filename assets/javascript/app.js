@@ -14,19 +14,26 @@ window.onload = function () {
     
     // An event function stored in a variable.
     var addAnimal = (event) => {
-        
+
         //Since we are not submitting the form anywhere, this will prevent the form of acting like we are.
         event.preventDefault();
 
         /* Trims any spaces from what is typed into the form and stores it into a variable. 
         This is what I had set up originally instead of the global variable and it was not working at all. */
         animal = document.querySelector("#animal-input").value.trim();
+        
+        // An if statement in case the user does not enter anything into the field, in which case no button
+        // will be added to the buttons.
+        if (animal === "") {
+            return false
+        } else {
 
         // Adds the animal from the from to the animals array.
         animalsArray.push(animal);
 
         //Generates a button for the animal inputted by calling the addButtons function declared above.
         addButtons();
+        }
     };
 
 

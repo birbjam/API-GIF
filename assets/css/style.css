@@ -2,8 +2,10 @@ body {
     margin: 20px;
 }
 
-#container {
+#wrapper {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 20px;
+    padding: 10px;
 }
 
 #gifbutton {
@@ -31,4 +33,5 @@ body {
     padding: 10px;
     border: none;
     display: inline-block;
+    text-transform: uppercase;
 }
