@@ -1,12 +1,11 @@
-//Button is linked to the api which then retrieves the animal that was clicked.
-
-//Clicking on images makes the GIFs move.
 
 window.onload = function () {
 
     // Setting a variable to house the initial animal array from which the initial buttons will be generated.
     var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
 
+    // Calling the addButtons function so all the initial buttons will be displayed on the page.
+    addButtons();
 
 
     // Event Listener for the "click for animal magic" button.
@@ -18,8 +17,7 @@ window.onload = function () {
         //Since we are not submitting the form anywhere, this will prevent the form of acting like we are.
         event.preventDefault();
 
-        /* Trims any spaces from what is typed into the form and stores it into a variable. 
-        This is what I had set up originally instead of the global variable and it was not working at all. */
+        //Trims any spaces from what is typed into the form and stores the value into a variable.
         animal = document.querySelector("#animal-input").value.trim();
         
         // An if statement in case the user does not enter anything into the field, in which case no button
@@ -28,18 +26,13 @@ window.onload = function () {
             return false
         } else {
 
-        // Adds the animal from the from to the animals array.
+        // Adds the animal from the form to the animals array.
         animalsArray.push(animal);
 
-        //Generates a button for the animal inputted by calling the addButtons function declared above.
+        //Calling the addButtons function to generate a new button based on the input.
         addButtons();
         }
     };
-
-
-    // Calling the addButtons function so all the initial buttons will be displayed on the page.
-    addButtons();
-
 
 
     // Event listener that waits for the animal buttons to be clicked.
@@ -51,14 +44,15 @@ window.onload = function () {
         //Set the animal variable from the data-name attribute on each animal button.
         let animal = event.target.dataset.name;
         
-        console.log("CONSOLE LOG ANIMAL: " + animal);
+        // Testing the animal variable.
+        //console.log("CONSOLE LOG ANIMAL: " + animal);
 
-                // A variable to house the API URL with the ability to insert whatever was 
+        // A variable to house the API URL with the ability to insert whatever was 
         // typed into the input field into the URL to get differet results.
         var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
         
         // For testing.
-        console.log(queryURL);
+        //console.log(queryURL);
 
             // API request using the above variable.
             fetch(queryURL, {
@@ -90,7 +84,7 @@ window.onload = function () {
                         var animalImage = document.createElement("img");
 
                         // Sets the src attribute of the image to a property from the result item.
-                        // This is where we could start it as a still image.
+                        // (This is where we could start it as a still image.)
                         animalImage.setAttribute("src", item.images.fixed_height.url);
                         animalImage.setAttribute("data-animal", animal);
 
@@ -129,9 +123,6 @@ window.onload = function () {
 
             // Adds a class of animal to the button.
             b.classList.add("animal");
-
-            /* The attribute is supposed to give the dataset the name of whatever animal is on the button
-            which could be used to fetch those particular gifs from the API but it just comes out as "undefined"*/
 
             // Sets the data attribute of the button.
             b.setAttribute("data-name", animal);
