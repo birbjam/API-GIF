@@ -13,6 +13,7 @@ A set of buttons labeled with animal names can be clicked and GIFs of that anima
 - HTML
 - CSS
 - JavaScript
+- GIHY API
 
 ## Authors
 Diana Lovette
