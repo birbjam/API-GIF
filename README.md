@@ -5,9 +5,9 @@ The API is called by a simple fetch function that loops through the results and 
 
 ## Built With
 - HTML
-- CSS with Bootstrap
+- CSS with [Bootstrap](https://getbootstrap.com/)
 - JavaScript
-- GIPHY API
+- [GIPHY API](https://developers.giphy.com/)
 
 ## Authors
 Diana Lovette
