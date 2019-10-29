@@ -1,141 +1,124 @@
 
 window.onload = function () {
+  // Setting a variable to house the initial animal array from which the initial buttons will be generated.
+  var animalsArray = ['cat', 'dog', 'goat', 'cow', 'elephant', 'crow', 'otter', 'sloth']
 
-    // Setting a variable to house the initial animal array from which the initial buttons will be generated.
-    var animalsArray = ["cat", "dog", "goat", "cow", "elephant", "bird", "otter", "sloth"];
+  // Calling the addButtons function so all the initial buttons will be displayed on the page.
+  addButtons()
 
-    // Calling the addButtons function so all the initial buttons will be displayed on the page.
-    addButtons();
+  // Event Listener for the "click for animal magic" button.
+  document.querySelector('#gifbutton').addEventListener('click', (event) => addAnimal(event))
 
+  // An event function stored in a variable.
+  var addAnimal = (event) => {
+    // Since we are not submitting the form anywhere, this will prevent the form of acting like we are.
+    event.preventDefault()
 
-    // Event Listener for the "click for animal magic" button.
-    document.querySelector("#gifbutton").addEventListener("click", (event) => addAnimal(event));
-    
-    // An event function stored in a variable.
-    var addAnimal = (event) => {
+    // Trims any spaces from what is typed into the form and stores the value into a variable.
+    animal = document.querySelector('#animal-input').value.trim()
 
-        //Since we are not submitting the form anywhere, this will prevent the form of acting like we are.
-        event.preventDefault();
+    // An if statement in case the user does not enter anything into the field, in which case no button
+    // will be added to the buttons.
+    if (animal === '') {
+      return false
+    } else {
+      // Adds the animal from the form to the animals array.
+      animalsArray.push(animal)
 
-        //Trims any spaces from what is typed into the form and stores the value into a variable.
-        animal = document.querySelector("#animal-input").value.trim();
-        
-        // An if statement in case the user does not enter anything into the field, in which case no button
-        // will be added to the buttons.
-        if (animal === "") {
-            return false
-        } else {
+      // Calling the addButtons function to generate a new button based on the input.
+      addButtons()
+    }
+  }
 
-        // Adds the animal from the form to the animals array.
-        animalsArray.push(animal);
+  // Event listener that waits for the animal buttons to be clicked.
+  document.querySelector('#animal-buttons').addEventListener('click', function (event) {
+    if (event.target.tagName === 'BUTTON') {
+      // Set the animal variable from the data-name attribute on each animal button.
+      let animal = event.target.dataset.name
 
-        //Calling the addButtons function to generate a new button based on the input.
-        addButtons();
-        }
-    };
+      // Testing the animal variable.
+      // console.log("CONSOLE LOG ANIMAL: " + animal);
 
+      // A variable to house the API URL with the ability to insert whatever was
+      // typed into the input field into the URL to get differet results.
+      var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`
 
-    // Event listener that waits for the animal buttons to be clicked.
-    document.querySelector("#animal-buttons").addEventListener("click", function (event) {
-        
+      // For testing.
+      // console.log(queryURL);
 
-        if (event.target.tagName === "BUTTON") {
+      // API request using the above variable.
+      fetch(queryURL, {
+        method: 'GET'
+      })
+      // After data comes back from the request.
+        .then(function (response) { return response.json() })
+        .then(function (response) {
+          // Testing to see if the response comes back.
+          // console.log(response);
 
-        //Set the animal variable from the data-name attribute on each animal button.
-        let animal = event.target.dataset.name;
-        
-        // Testing the animal variable.
-        //console.log("CONSOLE LOG ANIMAL: " + animal);
+          // Stores the data in a results variable.
+          var results = response.data
 
-        // A variable to house the API URL with the ability to insert whatever was 
-        // typed into the input field into the URL to get differet results.
-        var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`;
-        
-        // For testing.
-        //console.log(queryURL);
+          // Loops through the results with a for loop.
+          for (let item of results) {
+            // Creates a div element and stores it in a variable.
+            var animalDiv = document.createElement('div')
 
-            // API request using the above variable.
-            fetch(queryURL, {
-                method: "GET"
+            // Creates a paragraph tag.
+            var p = document.createElement('p')
+
+            // The paragraph tag will display the rating on the page.
+            p.innerText = `Rating: ${item.rating}`
+
+            // Creates an img element and stores it in a variable.
+            var animalImage = document.createElement('img')
+
+            // Sets the src attribute of the image to a property from the result item.
+            // (This is where we could start it as a still image.)
+            animalImage.setAttribute('src', item.images.fixed_height.url)
+            animalImage.setAttribute('data-animal', animal)
+
+            // Appends the p and img tags to the animalDiv tag.
+            animalDiv.appendChild(p)
+            animalDiv.appendChild(animalImage)
+
+            // Prepends the animalDiv to the HTML page in the "#images" div
+            let gifContainer = document.querySelector('#images')
+            gifContainer.prepend(animalDiv)
+
+            // Selects all the img elements and adds an event listener.
+            document.querySelector('#images').addEventListener('click', function () {
+              // Clicking on the image will restart the GIF.
+              animalImage.setAttribute('src', item.images.fixed_height.url)
             })
-                // After data comes back from the request.
-                .then(function (response) { return response.json() })
-                .then(function (response) {
-
-                    // Testing to see if the response comes back.
-                    //console.log(response);
-
-                    //Stores the data in a results variable.
-                    var results = response.data;
-
-                    // Loops through the results with a for loop.
-                    for (let item of results) {
-
-                        // Creates a div element and stores it in a variable.
-                        var animalDiv = document.createElement("div");
-
-                        // Creates a paragraph tag.
-                        var p = document.createElement("p");
-
-                        // The paragraph tag will display the rating on the page.
-                        p.innerText = `Rating: ${item.rating}`;
-
-                        // Creates an img element and stores it in a variable.
-                        var animalImage = document.createElement("img");
-
-                        // Sets the src attribute of the image to a property from the result item.
-                        // (This is where we could start it as a still image.)
-                        animalImage.setAttribute("src", item.images.fixed_height.url);
-                        animalImage.setAttribute("data-animal", animal);
-
-                        // Appends the p and img tags to the animalDiv tag.
-                        animalDiv.appendChild(p);
-                        animalDiv.appendChild(animalImage);
-
-                        // Prepends the animalDiv to the HTML page in the "#images" div
-                        let gifContainer = document.querySelector("#images");
-                        gifContainer.prepend(animalDiv);
-
-                        // Selects all the img elements and adds an event listener.
-                        document.querySelector("#images").addEventListener("click", function () {
-                        
-                            // Clicking on the image will restart the GIF.
-                            animalImage.setAttribute("src", item.images.fixed_height.url);
-                        });
-                    };
-                }
-
-                )
+          };
         }
-    });
 
-    
-    // Setting up function for adding the buttons.
-    function addButtons() {
+        )
+    }
+  })
 
-        document.querySelector("#animal-buttons").innerHTML = "";
+  // Setting up function for adding the buttons.
+  function addButtons () {
+    document.querySelector('#animal-buttons').innerHTML = ''
 
-        //Looping through the array of animals from the global variable.
-        for (let animal of animalsArray) {
+    // Looping through the array of animals from the global variable.
+    for (let animal of animalsArray) {
+      // Creates a button for each animal in the array.
+      var b = document.createElement('button')
 
-            // Creates a button for each animal in the array.
-            var b = document.createElement("button");
+      // Adds a class of animal to the button.
+      b.classList.add('animal')
 
-            // Adds a class of animal to the button.
-            b.classList.add("animal");
+      // Sets the data attribute of the button.
+      b.setAttribute('data-name', animal)
+      console.log('Add animal buttons to test if the animal displays: ' + animal)
 
-            // Sets the data attribute of the button.
-            b.setAttribute("data-name", animal);
-            console.log("Add animal buttons to test if the animal displays: " + animal);
+      // Sets the text inside the button.
+      b.innerText = animal
 
-            // Sets the text inside the button.
-            b.innerText = animal;
-
-            //Adds the button to the div with the id "animal-buttons", next to the previously created button.
-            document.querySelector("#animal-buttons").appendChild(b);
-        }
-    };
-
-
-
-};
+      // Adds the button to the div with the id "animal-buttons", next to the previously created button.
+      document.querySelector('#animal-buttons').appendChild(b)
+    }
+  };
+}

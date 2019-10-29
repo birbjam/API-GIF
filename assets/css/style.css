@@ -1,31 +1,36 @@
 body {
-    margin: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #wrapper {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 20px;
+    margin: auto;
     padding: 10px;
+}
+
+/* Links */
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
 }
 
 #gifbutton {
     color: white;
-    background-color: lightseagreen;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 15px;
-    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px;
+    font-size: 12px;
     text-decoration: none;
     border: none;
     display: inline-block;
+    text-transform: uppercase;
 }
 
 #animal-form {
-    float: right;
     margin: 5px;
     padding: 5px;
 }
 
+/* The buttons that are generated */
 .animal {
     margin: 5px;
     color: white;
@@ -34,4 +39,5 @@ body {
     border: none;
     display: inline-block;
     text-transform: uppercase;
+    border-radius: 10px;
 }

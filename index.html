@@ -3,35 +3,53 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>GIFTASTIC !</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+        <title>Giphy API</title>
     </head>
 
     <body>
         <div id="wrapper">
+
         <div id="container">
-        <h1>GIFS!</h1>
 
-        <!--This is where the buttons should appear.-->
-        <div id="animal-buttons"></div>
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>GIFOPOLIS</h1>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Click on the animal buttons to generate GIFs from the Giphy API.</h5>
+                    <p class="card-text">To add an animal, type into the field to create a button.</p>
 
-        <!--The form where you can enter an animal and click for GIFS to appear.-->
-        <form id="animal-form">
+                            <!--The form where you can enter an animal and click for GIFS to appear.-->
+                            <form id="animal-form">
+                            
+                                <input type="text" id="animal-input"></input><br>
+                            
+                                <button id="gifbutton" class="btn btn-primary" type="submit">create</button>
+                            </form>
 
-            <label>Add an Animal!</label><br>
+                            <!--This is where the buttons will appear.-->
+                            <div id="animal-buttons"></div>
 
-            <input type="text" id="animal-input"></input><br>
+                            <!--This is where the GIFs will appear.-->
+                            <div id="images"> </div>
 
-            <button id="gifbutton" type="submit">Click for Animal Magic</button>
-        </form>
 
-        <!--This is where the GIFs should appear.-->
-        <div id="images">
-        
-        </div> <!--Images div-->
+                </div>
+                <div class="card-footer text-muted">
+                         <a href="https://github.com/birbjam/API-GIF">GitHub Repo</a>
+                    
+                </div>
+            </div>
 
         </div> <!--Container div-->
+        
 
         </div><!--Wrapper div-->
 
