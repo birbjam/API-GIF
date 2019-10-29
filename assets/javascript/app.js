@@ -6,7 +6,7 @@ window.onload = function () {
   // Calling the addButtons function so all the initial buttons will be displayed on the page.
   addButtons()
 
-  // Event Listener for the "click for animal magic" button.
+  // Event Listener for the "create" button.
   document.querySelector('#gifbutton').addEventListener('click', (event) => addAnimal(event))
 
   // An event function stored in a variable.
@@ -24,6 +24,9 @@ window.onload = function () {
     } else {
       // Adds the animal from the form to the animals array.
       animalsArray.push(animal)
+      
+      // Function that clears the form
+      clearForm()
 
       // Calling the addButtons function to generate a new button based on the input.
       addButtons()
@@ -53,8 +56,9 @@ window.onload = function () {
       // After data comes back from the request.
         .then(function (response) { return response.json() })
         .then(function (response) {
+
           // Testing to see if the response comes back.
-          console.log(response);
+          console.log(response)
 
           // Stores the data in a results variable.
           var results = response.data
@@ -99,6 +103,11 @@ window.onload = function () {
         )
     }
   })
+
+  // Function definition for clearing the form field
+  function clearForm () {
+    document.getElementById('animal-form').reset()
+  }
 
   // Setting up function for adding the buttons.
   function addButtons () {

@@ -8,6 +8,10 @@ body {
     padding: 10px;
 }
 
+h1 {
+    font-family: 'Gugi', Verdana, Tahoma, sans-serif, cursive;
+}
+
 #animal-buttons {
     margin-bottom: 10px;
 }
@@ -16,6 +20,7 @@ body {
 a:link, a:visited, a:active {
     text-decoration: none;
     color: black;
+    font-family: 'Gugi', Verdana, Geneva, Tahoma, sans-serif, cursive;
 }
 
 a:hover {
