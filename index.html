@@ -20,11 +20,13 @@
 
             <div class="card text-center">
                 <div class="card-header">
-                    <h1>GIFOPOLIS</h1>
+                    <h1>Generate A GIF</h1>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Click on the animal buttons to generate GIFs from the Giphy API.</h5>
-                    <p class="card-text">To add an animal, type into the field to create a button.</p>
+                    <!--This is where the buttons will appear.-->
+                    <div id="animal-buttons"></div>
+                    <h5 class="card-title">Click on the buttons to generate GIFs.</h5>
+                    <p class="card-text">To add a button, type into the field and click 'create'.</p>
 
                             <!--The form where you can enter an animal and click for GIFS to appear.-->
                             <form id="animal-form">
@@ -34,8 +36,6 @@
                                 <button id="gifbutton" class="btn btn-primary" type="submit">create</button>
                             </form>
 
-                            <!--This is where the buttons will appear.-->
-                            <div id="animal-buttons"></div>
 
                             <!--This is where the GIFs will appear.-->
                             <div id="images"> </div>
