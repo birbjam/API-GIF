@@ -5,6 +5,9 @@ The API is called by a simple fetch function that loops through the results and 
 
 ## Under Construction
 
+## Heroku Link
+Once the site is fixed, it will be avaiable [HERE](https://giphy-appy.herokuapp.com/)
+
 ## Built With
 - HTML
 - CSS with [Bootstrap](https://getbootstrap.com/)
