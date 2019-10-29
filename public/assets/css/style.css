@@ -70,3 +70,14 @@ a:hover {
     display: inline-grid;
     overflow: auto;
 }
+
+/* GitHub Logo */
+.gh-logo {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+/* Giphy Logo */
+.gif-logo {
+    width: 90px;
+}

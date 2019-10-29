@@ -48,7 +48,7 @@ window.onload = function () {
 
       // A variable to house the API URL with the ability to insert whatever was
       // typed into the input field into the URL to get differet results.
-      var queryURL = `http://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`
+      var queryURL = `https://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`
 
       // For testing.
       // console.log(queryURL);
