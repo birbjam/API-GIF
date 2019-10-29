@@ -11,18 +11,12 @@ A set of buttons labeled with animal names can be clicked and GIFs of that anima
 
 ## Built With
 - HTML
-- CSS
+- CSS with Bootstrap
 - JavaScript
-- GIHY API
+- GIPHY API
 
 ## Authors
 Diana Lovette
 
 ## License
 None
-
-## Acknowledgments
-- Berkeley Extension Full Stack Web Development Bootcamp
-- W3Schools
-- StackOverflow
-- MDN WebDocs
