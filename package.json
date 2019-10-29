@@ -1,0 +1,25 @@
+{
+  "name": "api-gif",
+  "version": "1.0.0",
+  "description": "A GIF fetching application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birbjam/API-GIF.git"
+  },
+  "author": "Diana Lovette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/birbjam/API-GIF/issues"
+  },
+  "homepage": "https://github.com/birbjam/API-GIF#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
+}
