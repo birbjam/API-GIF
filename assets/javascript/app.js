@@ -15,16 +15,20 @@ window.onload = function () {
     event.preventDefault()
 
     // Trims any spaces from what is typed into the form and stores the value into a variable.
-    animal = document.querySelector('#animal-input').value.trim()
+    let animal = document.querySelector('#animal-input').value.trim()
 
     // An if statement in case the user does not enter anything into the field, in which case no button
     // will be added to the buttons.
     if (animal === '') {
       return false
+      // An if statement that alerts the user when the button already exists to avoid duplicates.
+    } else if (animalsArray.includes(animal)) {
+      clearForm()
+      return alert('This button already exists!')
     } else {
       // Adds the animal from the form to the animals array.
       animalsArray.push(animal)
-      
+
       // Function that clears the form
       clearForm()
 
@@ -56,7 +60,6 @@ window.onload = function () {
       // After data comes back from the request.
         .then(function (response) { return response.json() })
         .then(function (response) {
-
           // Testing to see if the response comes back.
           console.log(response)
 
