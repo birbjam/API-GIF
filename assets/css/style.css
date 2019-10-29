@@ -1,5 +1,5 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Tahoma, sans-serif;
 }
 
 #wrapper {
@@ -13,6 +13,7 @@ a:link, a:visited, a:hover, a:active {
     color: black;
 }
 
+/* 'Create' GIF button */
 #gifbutton {
     color: white;
     margin-top: 10px;
@@ -30,7 +31,7 @@ a:link, a:visited, a:hover, a:active {
     padding: 5px;
 }
 
-/* The buttons that are generated */
+/* Generated buttons */
 .animal {
     margin: 5px;
     color: white;
@@ -40,4 +41,13 @@ a:link, a:visited, a:hover, a:active {
     display: inline-block;
     text-transform: uppercase;
     border-radius: 10px;
+}
+
+/* Generated images */
+.img-container {
+    padding: 2px;
+    margin: 5px;
+    border: 2px black solid;
+    display: inline-grid;
+    overflow: auto;
 }

@@ -46,7 +46,7 @@ window.onload = function () {
       // For testing.
       // console.log(queryURL);
 
-      // API request using the above variable.
+      // API request using the query URL.
       fetch(queryURL, {
         method: 'GET'
       })
@@ -54,7 +54,7 @@ window.onload = function () {
         .then(function (response) { return response.json() })
         .then(function (response) {
           // Testing to see if the response comes back.
-          // console.log(response);
+          console.log(response);
 
           // Stores the data in a results variable.
           var results = response.data
@@ -63,12 +63,13 @@ window.onload = function () {
           for (let item of results) {
             // Creates a div element and stores it in a variable.
             var animalDiv = document.createElement('div')
+            // Adding a class attribute for styling purposes
+            animalDiv.setAttribute('class', 'img-container')
 
-            // Creates a paragraph tag.
-            var p = document.createElement('p')
-
-            // The paragraph tag will display the rating on the page.
-            p.innerText = `Rating: ${item.rating}`
+            // // Creates a paragraph tag.
+            // var p = document.createElement('p')
+            // // The paragraph tag will display the rating on the page.
+            // p.innerText = `Rating: ${item.rating}`
 
             // Creates an img element and stores it in a variable.
             var animalImage = document.createElement('img')
@@ -77,9 +78,10 @@ window.onload = function () {
             // (This is where we could start it as a still image.)
             animalImage.setAttribute('src', item.images.fixed_height.url)
             animalImage.setAttribute('data-animal', animal)
+            animalImage.setAttribute('class', 'img')
 
             // Appends the p and img tags to the animalDiv tag.
-            animalDiv.appendChild(p)
+            // animalDiv.appendChild(p)
             animalDiv.appendChild(animalImage)
 
             // Prepends the animalDiv to the HTML page in the "#images" div
@@ -105,20 +107,20 @@ window.onload = function () {
     // Looping through the array of animals from the global variable.
     for (let animal of animalsArray) {
       // Creates a button for each animal in the array.
-      var b = document.createElement('button')
+      var btn = document.createElement('button')
 
       // Adds a class of animal to the button.
-      b.classList.add('animal')
+      btn.classList.add('animal')
 
       // Sets the data attribute of the button.
-      b.setAttribute('data-name', animal)
-      console.log('Add animal buttons to test if the animal displays: ' + animal)
+      btn.setAttribute('data-name', animal)
+      // console.log('Add animal buttons to test if the animal displays: ' + animal)
 
       // Sets the text inside the button.
-      b.innerText = animal
+      btn.innerText = animal
 
       // Adds the button to the div with the id "animal-buttons", next to the previously created button.
-      document.querySelector('#animal-buttons').appendChild(b)
+      document.querySelector('#animal-buttons').appendChild(btn)
     }
   };
 }
