@@ -1,5 +1,5 @@
-
 window.onload = function () {
+
   // Setting a variable to house the initial animal array from which the initial buttons will be generated.
   var animalsArray = ['cat', 'dog', 'goat', 'cow', 'elephant', 'crow', 'otter', 'sloth']
 
@@ -37,6 +37,9 @@ window.onload = function () {
     }
   }
 
+  console.log(process.env.GIPHY_API_KEY)
+  var apiKey = process.env.GIPHY_API_KEY
+
   // Event listener that waits for the animal buttons to be clicked.
   document.querySelector('#animal-buttons').addEventListener('click', function (event) {
     if (event.target.tagName === 'BUTTON') {
@@ -48,7 +51,7 @@ window.onload = function () {
 
       // A variable to house the API URL with the ability to insert whatever was
       // typed into the input field into the URL to get differet results.
-      var queryURL = `https://api.giphy.com/v1/gifs/search?q=${animal}&api_key=hvJfg6OTKsJp7gfJ3BHvuSNBGjqF4sgf&limit=10&rating=pg`
+      var queryURL = `https://api.giphy.com/v1/gifs/search?q=${animal}&api_key=${apiKey}&limit=10&rating=pg`
 
       // For testing.
       // console.log(queryURL);
